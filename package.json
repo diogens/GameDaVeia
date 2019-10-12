@@ -1,12 +1,11 @@
 {
   "name": "gameDaVelha",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "repository": "git@github.com:diogens/GameDaVeia.git",
+  "author": "Diogenes <diogensgreen@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "start": "browser-sync start --server ./dist --files ."
+  }
 }

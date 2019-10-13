@@ -36,6 +36,7 @@ class JogoVeia {
     });
   }
 
+  //metodo para salvaro todos os dados no localStorage
   salvaLocal() {
     const dados = {
       jogardorX: this.jogardorX.value,

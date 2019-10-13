@@ -15,6 +15,7 @@ class JogoVeia {
     this.vitoria = [448, 56, 7, 298, 146, 73, 273, 84];
   }
 
+  //inicia e compartilha e com todos os metodos os elementos da aplicação
   iniciaElementos() {
     this.jogardorX = document.querySelector("#jogador-x");
     this.jogardorO = document.querySelector("#jogador-o");
@@ -44,6 +45,8 @@ class JogoVeia {
 
     localStorage.setItem("jogo", JSON.stringify(dados));
   }
+
+  //puxa todas as informções da localStorage
   carregaLocal() {
     const dados = JSON.parse(localStorage.getItem("jogo"));
 
@@ -54,6 +57,7 @@ class JogoVeia {
     this.render();
   }
 
+  //limpa a LocalStorage
   limpaLocal() {
     localStorage.removeItem("jogo");
     this.jogardorO.value = "";
@@ -77,10 +81,9 @@ class JogoVeia {
   render() {
     const resultado = this.verificaVitoria();
 
-    if (resultado === "X" || resultado === "O") {
+    if (resultado == "X" || resultado == "O") {
       this.fim = true;
       console.log(`O jogador ${resultado} venceu`);
-      alert(`O jogador ${resultado} venceu`);
     }
     const velhaElement = document.querySelectorAll("[data-id]");
 
@@ -88,6 +91,8 @@ class JogoVeia {
       velhaElement[i].innerHTML = this.jogadas[i] == 0 ? "" : this.jogadas[i];
       /*  console.log(velhaElement[i]); */
     }
+
+    console.log(this.jogadas);
   }
 
   verificaVitoria() {
@@ -102,6 +107,11 @@ class JogoVeia {
     );
 
     for (const element of this.vitoria) {
+      console.log(valorX);
+      console.log(valorO);
+      console.log("jogadas", this.jogadas);
+      console.log("elemento", element);
+      console.log(this.vitoria);
       if ((element & valorX) == element) {
         console.log("X", element);
         console.log("X", valorX);

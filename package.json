@@ -1,11 +1,15 @@
 {
-  "name": "gameDaVelha",
+  "name": "gamedavelha",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:diogens/GameDaVeia.git",
   "author": "Diogenes <diogensgreen@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "dev": "yarn add browser-sync",
     "start": "browser-sync start --server ./dist --files ."
+  },
+  "dependencies": {
+    "browser-sync": "^2.26.7"
   }
 }

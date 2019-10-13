@@ -3,12 +3,12 @@
 ### Para executar o projeto
 
 1.  Para instalar todas as dependências do projeto, execute o seguinte comando :
-    `npm dev` <b>ou</b> `yarn dev`
+    <p>`npm dev` <b>ou</b> `yarn dev`</p>
 2.  Para rodar o projeto, execute o seguinte comando:
-    `npm start` <b>ou</b> `yarn start`
-    **Local: http://localhost:3000**
-    **External: http://SeuIP:3000**
+    <p>`npm start` <b>ou</b> `yarn start`</p>
+3.  Acesse:
+    <p> **Local: http://localhost:3000** ou **External: http://SeuIP:3000**</p>
 
 Projeto desenvolvido para disciplina de **Sistemas Distribuídos**.
 
-> **Integrantes:** Douglas,_Daniel, João, Guilherme, Diogenes_
+> **Integrantes:** Douglas Pimentel, Daniel dos Reis, João Henrique, Gabriel Bastos, Kelvin, Diogenes Oliveira

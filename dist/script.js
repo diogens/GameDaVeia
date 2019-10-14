@@ -99,9 +99,12 @@ class JogoVeia {
 
     if (resultado == "X" || resultado == "O") {
       this.fim = true;
+      this.salvar.style.display = "block";
       this.modal("..... fim da partida");
       this.modal(`O jogador ${resultado} venceu`);
       /*  alert(`O jogador ${resultado} venceu`); */
+    } else {
+      this.salvar.style.display = "none";
     }
     const velhaElement = document.querySelectorAll("[data-id]");
 
@@ -164,8 +167,8 @@ class JogoVeia {
 
   enviarServidor() {
     //pegar o nome dos jogadores
-    const jogardorX = this.jogardorX.value;
-    const jogardorO = this.jogardorO.value;
+    const jogadorX = this.jogardorX.value;
+    const jogadorO = this.jogardorO.value;
 
     //criar uma task do jogo
     domtoimage
@@ -173,13 +176,13 @@ class JogoVeia {
       .then(dataUrl => {
         return axios.post("/save", {
           jogadorX,
-          JogadorO,
+          jogadorO,
           jogadas: JSON.stringify(this.jogadas),
           img: dataUrl
         });
       })
 
-      .then(function(response) {
+      .then(response => {
         this.modal("Envio com sucessooooooo!");
       })
 

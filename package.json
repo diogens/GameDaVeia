@@ -7,9 +7,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "yarn add browser-sync",
-    "start": "browser-sync start --server ./dist --files ."
+    "start": "browser-sync start --server ./dist --files .",
+    "runner": "nodemon index.js ."
   },
   "dependencies": {
-    "browser-sync": "^2.26.7"
+    "browser-sync": "^2.26.7",
+    "knex": "^0.19.5",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.3",
+    "restify": "^8.4.0"
   }
 }

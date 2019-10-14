@@ -19,7 +19,7 @@
     <p>```npm runner``` <b>ou</b> ```yarn runner```</p>
 
 5.  Acesse:
-    <p> **Local: http://localhost:3000** ou **External: http://SeuIP:3000**</p>
+    <p> **Local: http://localhost:8080** ou **External: http://SeuIP:8080**</p>
 
 Projeto desenvolvido para disciplina de **Sistemas Distribuídos**.
 

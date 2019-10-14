@@ -75,6 +75,16 @@ class JogoVeia {
       return;
     }
 
+    if (!event.target.dataset.id) {
+      console.log("Você precisa clicar em uma casa");
+      return;
+    }
+
+    if (this.jogadas[id] != 0) {
+      console.log("Está posição ja foi selecionada ");
+      return;
+    }
+
     this.jogadas[id] = this.turno ? "X" : "O";
     this.turno = !this.turno;
   }
@@ -84,8 +94,9 @@ class JogoVeia {
 
     if (resultado == "X" || resultado == "O") {
       this.fim = true;
+      console.log("..... fim da partida");
       console.log(`O jogador ${resultado} venceu`);
-      alert(`O jogador ${resultado} venceu`);
+      /*  alert(`O jogador ${resultado} venceu`); */
     }
     const velhaElement = document.querySelectorAll("[data-id]");
 

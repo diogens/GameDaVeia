@@ -85,6 +85,7 @@ class JogoVeia {
     if (resultado == "X" || resultado == "O") {
       this.fim = true;
       console.log(`O jogador ${resultado} venceu`);
+      alert(`O jogador ${resultado} venceu`);
     }
     const velhaElement = document.querySelectorAll("[data-id]");
 
@@ -97,35 +98,32 @@ class JogoVeia {
   }
 
   verificaVitoria() {
+    //decimal da sequenci de quem jogou x
     const valorX = parseInt(
       this.jogadas.map(value => (value == "X" ? 1 : 0)).join(""),
       2
     );
 
+    //decimal da sequenci de quem jogou o
     const valorO = parseInt(
       this.jogadas.map(value => (value == "O" ? 1 : 0)).join(""),
       2
     );
 
+    console.log("ValorX", valorX);
+    console.log("ValorO", valorO);
+    console.log("Vitoria", this.vitoria);
+
     for (const element of this.vitoria) {
-      console.log(valorX);
-      console.log(valorO);
-      console.log("jogadas", this.jogadas);
-      console.log("elemento", element);
-      console.log(this.vitoria);
       if ((element & valorX) == element) {
-        console.log("X", element);
-        console.log("X", valorX);
         return "X";
       }
       if ((element & valorO) == element) {
-        console.log("0", element);
-        console.log("0", valorO);
         return "O";
       }
-
-      return "";
     }
+
+    return "";
 
     this.render();
   }

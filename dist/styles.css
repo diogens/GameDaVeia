@@ -49,3 +49,47 @@ span {
   user-select: none;
   margin: 0;
 }
+
+#modais {
+  position: absolute;
+  margin: 130px auto;
+  font-size: 30;
+  font-family: inherit;
+  z-index: 3;
+}
+
+.modalClass {
+  background: wheat;
+  width: 300px;
+  padding: 30px;
+  display: block;
+  margin-bottom: 10px;
+  animation-name: exibe;
+  animation-duration: 0.4s;
+}
+
+.remover {
+  animation: ocutar 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes exibe {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ocutar {
+  50% {
+    transform: translateX(5%);
+  }
+  80% {
+    transform: translateX(-200%);
+  }
+  100% {
+    opacity: 0;
+  }
+}

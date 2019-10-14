@@ -26,6 +26,9 @@ class JogoVeia {
     this.carregarLocal = document.querySelector("#carrega-local");
     this.carregarLocal.addEventListener("click", this.carregaLocal.bind(this));
 
+    this.salvar = document.querySelector("#salvar");
+    this.salvar.addEventListener("click", this.enviarServidor.bind(this));
+
     this.limparLocal = document.querySelector("#limpar");
     this.limparLocal.addEventListener("click", this.limpaLocal.bind(this));
 
@@ -71,17 +74,19 @@ class JogoVeia {
     const id = event.target.dataset.id;
 
     if (this.fim) {
-      console.log("Partida terminada");
+      this.modal("Partida terminada");
       return;
     }
 
+    //trava e informa um erro
     if (!event.target.dataset.id) {
-      console.log("Você precisa clicar em uma casa");
+      this.modal("Você precisa clicar em uma casa");
       return;
     }
 
+    //trava o valor e informa um erro
     if (this.jogadas[id] != 0) {
-      console.log("Está posição ja foi selecionada ");
+      this.modal("Está posição ja foi selecionada ");
       return;
     }
 
@@ -94,18 +99,18 @@ class JogoVeia {
 
     if (resultado == "X" || resultado == "O") {
       this.fim = true;
-      console.log("..... fim da partida");
-      console.log(`O jogador ${resultado} venceu`);
+      this.modal("..... fim da partida");
+      this.modal(`O jogador ${resultado} venceu`);
       /*  alert(`O jogador ${resultado} venceu`); */
     }
     const velhaElement = document.querySelectorAll("[data-id]");
 
     for (let i = 0; i < 9; i++) {
       velhaElement[i].innerHTML = this.jogadas[i] == 0 ? "" : this.jogadas[i];
-      /*  console.log(velhaElement[i]); */
+      /*  this.modal(velhaElement[i]); */
     }
 
-    console.log(this.jogadas);
+    /* this.modal(this.jogadas); */
   }
 
   verificaVitoria() {
@@ -121,9 +126,9 @@ class JogoVeia {
       2
     );
 
-    console.log("ValorX", valorX);
-    console.log("ValorO", valorO);
-    console.log("Vitoria", this.vitoria);
+    /* this.modal("ValorX", valorX);
+    this.modal("ValorO", valorO);
+    this.modal("Vitoria", this.vitoria); */
 
     for (const element of this.vitoria) {
       if ((element & valorX) == element) {
@@ -137,5 +142,50 @@ class JogoVeia {
     return "";
 
     this.render();
+  }
+
+  modal(text) {
+    const modais = document.querySelector("#modais");
+    const modal = document.createElement("div");
+
+    modal.innerHTML = text;
+
+    modal.classList.add("modalClass");
+
+    modais.appendChild(modal);
+
+    setTimeout(() => {
+      modal.classList.add("remover");
+      setTimeout(() => {
+        modais.removeChild(modal);
+      }, 1000);
+    }, 2000);
+  }
+
+  enviarServidor() {
+    //pegar o nome dos jogadores
+    const jogardorX = this.jogardorX.value;
+    const jogardorO = this.jogardorO.value;
+
+    //criar uma task do jogo
+    domtoimage
+      .toPng(this.velha, { width: "400", height: "400" })
+      .then(dataUrl => {
+        return axios.post("/save", {
+          jogadorX,
+          JogadorO,
+          jogadas: JSON.stringify(this.jogadas),
+          img: dataUrl
+        });
+      })
+
+      .then(function(response) {
+        this.modal("Envio com sucessooooooo!");
+      })
+
+      .catch(error => {
+        this.modal("hummmmm.... deu ruim", error);
+      });
+    //repassa para o server
   }
 }
